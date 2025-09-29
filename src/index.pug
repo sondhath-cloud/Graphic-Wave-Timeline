@@ -1,0 +1,27 @@
+//- inspired by:
+//- twitter.com/harshsinghsv/status/1969044686221234366
+
+- const pictures = 12
+- const hoverZones = 9;
+- const api = "https://unsplash.it/800"
+
+nav(
+  style={
+    '--max-p': pictures,
+    '--max-z': hoverZones,
+  }
+)
+  each _, i in Array(pictures) 
+    a(href="#" style={
+      '--i': i, 
+      '--img':`url('${api}?${i}')`
+    })
+      .img
+      aside.hover-zone
+        each _ in Array(hoverZones) 
+          i
+
+label debug
+  input#dbg(type="checkbox", tabindex=1)
+
+  
