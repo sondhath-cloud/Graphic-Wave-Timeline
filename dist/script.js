@@ -26,6 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // Add mouseleave event to navigation to hide text when leaving the nav area
+  const nav = document.querySelector('nav');
+  nav.addEventListener('mouseleave', function(e) {
+    // Remove 'clicked' class from all links when mouse leaves navigation
+    navLinks.forEach(link => {
+      link.classList.remove('clicked');
+    });
+  });
+  
   // Optional: Click outside to hide all text overlays
   document.addEventListener('click', function(e) {
     // Check if click is outside of nav
