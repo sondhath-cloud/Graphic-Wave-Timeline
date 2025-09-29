@@ -8,25 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function(e) {
       e.preventDefault(); // Prevent default link behavior
       
-      // Remove 'clicked' class from all other links
+      // First, remove 'clicked' class from ALL links (including this one)
       navLinks.forEach(otherLink => {
-        if (otherLink !== this) {
-          otherLink.classList.remove('clicked');
-        }
+        otherLink.classList.remove('clicked');
       });
       
-      // Toggle 'clicked' class on the clicked link
-      this.classList.toggle('clicked');
-      
-      // Optional: Add a small delay to show the text before hiding it
-      // Uncomment the lines below if you want the text to auto-hide after 3 seconds
-      /*
-      if (this.classList.contains('clicked')) {
-        setTimeout(() => {
-          this.classList.remove('clicked');
-        }, 3000);
-      }
-      */
+      // Then add 'clicked' class only to the clicked link
+      this.classList.add('clicked');
+    });
+    
+    // Add mouseover event to hide text overlays when hovering over other images
+    link.addEventListener('mouseover', function(e) {
+      // Remove 'clicked' class from ALL links when hovering over any image
+      navLinks.forEach(otherLink => {
+        otherLink.classList.remove('clicked');
+      });
     });
   });
   
